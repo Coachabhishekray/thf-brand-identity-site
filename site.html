@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THF - The Hidden Founder | Official Brand Site</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. RESET & VARIABLES */
+:root {
+    --deep-blue: #002F5F;
+    --gold: #C0A060;
+    --cream: #F5F2E8;
+    --slate: #475569;
+    --border: #d1d5db;
+    --max-width: 1200px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+
+body {
+    background-color: var(--cream);
+    font-family: 'Manrope', sans-serif;
+    color: var(--slate);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .serif {
+    font-family: 'Playfair Display', serif;
+    color: var(--deep-blue);
+}
+
+img { max-width: 100%; display: block; }
+
+/* 2. NAVIGATION */
+nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(245, 242, 232, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 15px 5%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo { font-weight: 800; color: var(--deep-blue); font-size: 20px; letter-spacing: 2px; }
+.nav-logo span { color: var(--gold); }
+
+.nav-links { display: flex; gap: 30px; }
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--deep-blue); 
+    font-size: 12px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    font-weight: 600;
+    transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* Mobile Menu Toggle (Simplified for this demo, usually requires JS for full menu) */
+.mobile-menu-icon { display: none; font-size: 24px; color: var(--deep-blue); cursor: pointer; }
+
+@media(max-width: 768px) {
+    .nav-links { display: none; } /* Hide links on mobile */
+    .mobile-menu-icon { display: block; } /* Show menu icon */
+    nav { padding: 15px 20px; }
+}
+
+/* 3. SECTIONS COMMON */
+section {
+    padding: 80px 5%; /* Reduced padding for mobile feel */
+    max-width: var(--max-width);
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+@media (min-width: 768px) {
+    section { padding: 120px 5%; } /* Restore padding on larger screens */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+    .section-header { margin-bottom: 60px; }
+}
+
+.section-label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.section-title {
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+/* 4. HERO SECTION */
+.hero {
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding-top: 80px; /* offset for nav */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(var(--deep-blue) 0.5px, transparent 0.5px);
+    background-size: 40px 40px;
+    opacity: 0.05;
+    z-index: -1;
+}
+
+.hero-logo-frame {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.hero-circle {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px; height: 250px;
+    border: 1px solid rgba(192, 160, 96, 0.3);
+    border-radius: 50%;
+    z-index: -1;
+    animation: spin 60s linear infinite;
+}
+
+@media (min-width: 768px) {
+    .hero-circle { width: 350px; height: 350px; }
+    .hero-logo-frame { margin-bottom: 50px; }
+}
+
+@keyframes spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+.hero h1 {
+    font-size: clamp(48px, 12vw, 100px);
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+}
+
+.tagline {
+    font-size: clamp(18px, 4vw, 24px);
+    font-style: italic;
+    color: var(--slate);
+    margin-top: 10px;
+}
+
+.cta-btn {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--deep-blue);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: transform 0.3s, background 0.3s;
+    box-shadow: 0 10px 20px rgba(0, 47, 95, 0.2);
+}
+
+.cta-btn:hover {
+    background: var(--gold);
+    transform: translateY(-3px);
+}
+
+/* 5. ABOUT (Mission/Vision) */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 40px;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .about-grid { grid-template-columns: 1fr 1fr; gap: 60px; } /* 2 cols on laptop */
+}
+
+.map-container {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+}
+
+@media (min-width: 768px) {
+    .map-container { padding: 40px; min-height: 350px; }
+}
+
+.mission-card {
+    padding: 25px;
+    border-left: 4px solid var(--gold);
+    background: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+    .mission-card { padding: 30px; margin-bottom: 30px; }
+}
+
+/* 6. LOGO GRID */
+.logo-construction {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    aspect-ratio: 16/9; /* Maintain aspect ratio */
+    background: #fff;
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* 7. COLORS */
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cols on mobile */
+    gap: 15px;
+}
+
+@media (min-width: 768px) {
+    .color-grid { grid-template-columns: repeat(4, 1fr); gap: 30px; } /* 4 cols on laptop */
+}
+
+.color-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+@media (min-width: 768px) {
+    .color-card { padding: 20px; }
+}
+
+.color-card:hover { transform: translateY(-5px); }
+
+.swatch {
+    height: 80px;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+    .swatch { height: 120px; margin-bottom: 20px; }
+}
+
+/* 8. STRATEGY & SPONSORSHIP */
+.strategy-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 20px;
+}
+
+@media (min-width: 600px) {
+    .strategy-grid { grid-template-columns: repeat(2, 1fr); } /* 2 cols tablet */
+}
+
+@media (min-width: 900px) {
+    .strategy-grid { grid-template-columns: repeat(4, 1fr); gap: 30px; } /* 4 cols desktop */
+}
+
+.stat-card {
+    text-align: center;
+    padding: 30px 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+.stat-icon {
+    font-size: 30px;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+/* Sponsorship specific grid adjustments */
+#sponsorship .strategy-grid {
+    grid-template-columns: 1fr; /* Stack sponsorship tiers on mobile */
+}
+
+@media (min-width: 768px) {
+    #sponsorship .strategy-grid { grid-template-columns: repeat(3, 1fr); } /* 3 cols on desktop */
+}
+
+/* 9. FOOTER */
+footer {
+    background: var(--deep-blue);
+    color: #fff;
+    padding: 80px 5% 40px;
+    text-align: center;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 30px 0;
+    flex-wrap: wrap; /* Allow wrapping on very small screens */
+}
+
+.footer-socials i {
+    font-size: 24px;
+    color: rgba(255,255,255,0.7);
+    transition: color 0.3s;
+    cursor: pointer;
+    padding: 10px; /* Touch target size */
+}
+
+.footer-socials i:hover { color: var(--gold); }
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.whatsapp-btn:hover { transform: scale(1.05); }
+
+.copyright {
+    margin-top: 40px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 30px;
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-logo">THF <span>PODCAST</span></div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#identity">Identity</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#sponsorship">Partnership</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="mobile-menu-icon">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-logo-frame">
+        <div class="hero-circle"></div>
+        <!-- Ensure image scales on mobile -->
+        <img src="image_139485.png" alt="THF Logo" style="width: 150px; height: auto;">
+    </div>
+    
+    <span class="section-label">Official Brand Site</span>
+    <h1>THE HIDDEN<br>FOUNDER</h1>
+    <p class="tagline">"Neev se Shikhar Tak"</p>
+    
+    <a href="#about" class="cta-btn">Explore The Brand</a>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <div class="section-header">
+        <span class="section-label">01 // Purpose</span>
+        <h2 class="section-title">Unveiling Bihar's Potential</h2>
+        <p style="max-width: 600px; margin: 0 auto; font-size: 16px;">Decoding the Business Intelligence behind untold stories using modern AI strategies.</p>
+    </div>
+
+    <div class="about-grid">
+        <div class="map-container">
+            <img src="Gemini_Generated_Image_abd2y7abd2y7abd2 (1).jpg" alt="Bihar Map" style="max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
+        </div>
+        
+        <div>
+            <div class="mission-card">
+                <i class="fa-solid fa-bullseye" style="color: var(--gold); font-size: 24px; margin-bottom: 15px;"></i>
+                <h3 class="serif" style="margin-bottom: 10px; font-size: 24px;">Our Mission</h3>
+                <p>To uncover practical, ground-level journeys from Bihar’s hidden founders, bridging the gap between aspirational dreams and actionable reality.</p>
+            </div>
+            
+            <div class="mission-card" style="border-left-color: var(--deep-blue);">
+                <i class="fa-solid fa-eye" style="color: var(--deep-blue); font-size: 24px; margin-bottom: 15px;"></i>
+                <h3 class="serif" style="margin-bottom: 10px; font-size: 24px;">Our Vision</h3>
+                <p>To become the global go-to platform for Bihar’s entrepreneurial stories, creating a repository of inspiration for the next generation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Identity Section -->
+<section id="identity">
+    <div class="section-header">
+        <span class="section-label">02 // Identity</span>
+        <h2 class="section-title">The Logomark</h2>
+    </div>
+
+    <div class="logo-construction">
+        <!-- Grid Lines for Effect -->
+        <div style="position: absolute; top: 50%; width: 100%; height: 1px; background: rgba(192, 160, 96, 0.2);"></div>
+        <div style="position: absolute; left: 50%; height: 100%; width: 1px; background: rgba(192, 160, 96, 0.2);"></div>
+        
+        <img src="image_139485.png" alt="THF Logo" style="width: 50%; max-width: 250px; z-index: 2;">
+        
+        <div style="position: absolute; bottom: 15px; right: 15px; font-family: monospace; font-size: 10px; color: var(--slate);">SAFE ZONE: 20%</div>
+    </div>
+</section>
+
+<!-- Colors Section -->
+<section id="colors">
+    <div class="section-header">
+        <span class="section-label">03 // Palette</span>
+        <h2 class="section-title">Color System</h2>
+    </div>
+
+    <div class="color-grid">
+        <div class="color-card">
+            <div class="swatch" style="background: var(--gold);"></div>
+            <div class="chip-name">Gold</div>
+            <div style="font-family: monospace; font-size: 12px; color: #888;">#C0A060</div>
+        </div>
+        <div class="color-card">
+            <div class="swatch" style="background: var(--deep-blue);"></div>
+            <div class="chip-name">Deep Blue</div>
+            <div style="font-family: monospace; font-size: 12px; color: #888;">#002F5F</div>
+        </div>
+        <div class="color-card">
+            <div class="swatch" style="background: var(--cream); border: 1px solid #ddd;"></div>
+            <div class="chip-name">Cream</div>
+            <div style="font-family: monospace; font-size: 12px; color: #888;">#F5F2E8</div>
+        </div>
+        <div class="color-card">
+            <div class="swatch" style="background: #000;"></div>
+            <div class="chip-name">Rich Black</div>
+            <div style="font-family: monospace; font-size: 12px; color: #888;">#000000</div>
+        </div>
+    </div>
+</section>
+
+<!-- Strategy Section -->
+<section id="strategy">
+    <div class="section-header">
+        <span class="section-label">04 // Strategy</span>
+        <h2 class="section-title">Marketing & Virality</h2>
+    </div>
+
+    <div class="strategy-grid">
+        <div class="stat-card">
+            <i class="fa-solid fa-scissors stat-icon"></i>
+            <h4 class="serif">Short-Form</h4>
+            <p style="font-size: 14px; margin-top: 10px;">10-15 viral reels per episode tailored for Instagram & YouTube Shorts.</p>
+        </div>
+        <div class="stat-card">
+            <i class="fa-brands fa-linkedin stat-icon"></i>
+            <h4 class="serif">LinkedIn</h4>
+            <p style="font-size: 14px; margin-top: 10px;">Professional insights and text-based carousels for B2B reach.</p>
+        </div>
+        <div class="stat-card">
+            <i class="fa-brands fa-whatsapp stat-icon"></i>
+            <h4 class="serif">Community</h4>
+            <p style="font-size: 14px; margin-top: 10px;">Direct push distribution via exclusive WhatsApp groups.</p>
+        </div>
+        <div class="stat-card">
+            <i class="fa-solid fa-bullseye stat-icon"></i>
+            <h4 class="serif">Targeted Ads</h4>
+            <p style="font-size: 14px; margin-top: 10px;">Meta Ads boosting best performing clips for maximum ROI.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Sponsorship Section -->
+<section id="sponsorship" style="background: #fff;">
+    <div class="section-header">
+        <span class="section-label">05 // Partnership</span>
+        <h2 class="section-title">Sponsorship Tiers</h2>
+    </div>
+
+    <div class="strategy-grid">
+        <div class="stat-card" style="border-color: var(--gold);">
+            <div style="font-size: 12px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px;">High Visibility</div>
+            <h3 class="serif" style="font-size: 24px;">Episode Sponsor</h3>
+            <p style="font-size: 20px; font-weight: 700; color: var(--deep-blue); margin: 10px 0;">₹25K–50K</p>
+            <p style="font-size: 13px;">Integrated ad spots & Logo placement.</p>
+        </div>
+
+        <div class="stat-card" style="background: var(--deep-blue); color: #fff; border: none;">
+            <div style="font-size: 12px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px;">Best Value</div>
+            <h3 class="serif" style="font-size: 24px; color: #fff;">Season Sponsor</h3>
+            <p style="font-size: 20px; font-weight: 700; color: #fff; margin: 10px 0;">₹5L–10L</p>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.8);">Holistic branding across 10 episodes.</p>
+        </div>
+
+        <div class="stat-card" style="border-color: var(--gold);">
+            <div style="font-size: 12px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px;">Targeted Reach</div>
+            <h3 class="serif" style="font-size: 24px;">Segment Sponsor</h3>
+            <p style="font-size: 20px; font-weight: 700; color: var(--deep-blue); margin: 10px 0;">₹15K–30K</p>
+            <p style="font-size: 13px;">Ownership of specific topic segments.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact/Footer -->
+<footer id="contact">
+    <img src="image_139485.png" alt="THF Logo" style="width: 120px; margin: 0 auto 30px; filter: brightness(0) invert(1);">
+    
+    <h2 class="serif" style="color: #fff; margin-bottom: 10px;">Join the Movement</h2>
+    <p style="font-style: italic; color: var(--gold); margin-bottom: 40px;">#thehiddenfounder</p>
+
+    <a href="#" class="whatsapp-btn">
+        <i class="fa-brands fa-whatsapp"></i> Join WhatsApp Channel
+    </a>
+
+    <div class="footer-socials">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-spotify"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-linkedin"></i>
+    </div>
+
+    <div class="copyright">
+        &copy; 2024 The Hidden Founder. All Rights Reserved. <br>Host: Kishan Singh
+    </div>
+</footer>
+
+</body>
+</html>
